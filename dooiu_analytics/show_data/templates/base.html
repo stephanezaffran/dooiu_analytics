@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>dooiu analytics</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}</h1>
+    <div class="sidebar">
+        <ul>
+            <li><a href="{% url 'graph' %}">Graph 1</a></li>
+            <li><a href="#">Graph 2</a></li>
+            <li><a href="#">Graph 3</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>
