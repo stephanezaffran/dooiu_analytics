@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-
+from dooiu_analytics.settings import BASE_DIR
 from django.contrib import admin
 from django.urls import path
 from show_data import views as data_views
@@ -24,7 +24,7 @@ from login import views as login_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', data_views.hello),
-    path('login/', login_view, name='login'),
+    path('login/', login_view.login, name='login'),
     path('home/', data_views.home, name='home'),
     path('graph/', data_views.graph, name='graph'),
 ]
