@@ -19,12 +19,14 @@ from dooiu_analytics.settings import BASE_DIR
 from django.contrib import admin
 from django.urls import path
 from show_data import views as data_views
-from login import views as login_view
+from login import views as login_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', data_views.hello),
-    path('login/', login_view.login, name='login'),
+    path('login/', login_views.user_login, name='login'),
+    path('logout/', login_views.user_logout, name='logout'),
     path('home/', data_views.home, name='home'),
-    path('graph/', data_views.graph, name='graph'),
+    path('customer_analytic/', data_views.customer_analytic, name='customer_analytic'),
+    path('sales_analytic/', data_views.sales_analytic, name='sales_analytic'),
 ]

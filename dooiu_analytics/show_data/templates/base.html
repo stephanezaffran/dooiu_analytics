@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-{% load static %}
+
 <html>
 <head>
+    {% load static %}
     <title>dooiu analytics</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index2.css' %}">
+    <!--    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="{% static 'js/script.js' %}"></script>
 </head>
 <body>
-    <h1>Welcome, {{ user.username }}</h1>
-    <div class="sidebar">
+<div class="container_base">
+
+    <div class="base_item1">
+        <img class="base_logo " src="{% static 'img/dooiu_logo2.png' %}" alt="">
+        {% if user and request.path != '/login/'%}
+        <h1 class="title_base ">Welcome, {{ user.first_name }}</h1>
+        {% endif %}
+        {% if request.path == '/login/'%}
+        <h1 id="h1_login">login</h1>
+        {% endif %}
+    </div>
+
+    {% if user and request.path != '/login/'%}
+    <div class="sidebar base_item2">
         <ul>
-            <li><a href="{% url 'graph' %}">Graph 1</a></li>
-            <li><a href="#">Graph 2</a></li>
-            <li><a href="#">Graph 3</a></li>
+            <li><a href="{% url 'home' %}">home</a></li>
+            <li><a href="{% url 'customer_analytic' %}">customers</a></li>
+            <li><a href="{% url 'sales_analytic' %}">sales</a></li>
+            <li><a href="#">other</a></li>
+            <li><a href="{% url 'logout' %}">logout</a></li>
         </ul>
     </div>
-    <div class="content">
+    {% endif %}
+    <div class="content  {% block body_class %}{% endblock %}">
         {% block content %}
 
         {% endblock %}
     </div>
+</div>
 </body>
 </html>

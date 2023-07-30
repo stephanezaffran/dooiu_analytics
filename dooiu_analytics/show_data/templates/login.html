@@ -1,17 +1,26 @@
-
-
 {% extends 'base.html' %}
 
+{% block body_class %}
+    login_page
+{% endblock %}
+
 {% block content %}
-    {% if error_message %}
+{% load static %}
+
+
+   {% if error_message %}
         <p>{{error_message}}</p>
     {% endif %}
 
-<h1>Login</h1>
-    <form method="post" action="{% url 'login' %}">
+
+
+<div  >
+      <form method="post" action="{% url 'login' %}" class="login_container" >
         {% csrf_token %}
         <input type="text" name="phone_number" placeholder="phone number">
         <input type="password" name="password" placeholder="Password">
-        <input type="submit" value="Login">
+        <input  type="submit" class="login_button" value="Login">
     </form>
+</div>
+
 {% endblock %}

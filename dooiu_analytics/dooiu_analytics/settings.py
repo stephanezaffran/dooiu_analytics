@@ -50,6 +50,11 @@ LOGGING = {
     },
 }
 
+
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -71,12 +76,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'dooiu_analytics.middleware.LoginRequiredMiddleware',
 ]
 
+# 'dooiu_analytics.middleware.LoginRequiredMiddleware',
 
-LOGIN_URL = 'login/'
+LOGIN_URL = '/login/'
 
-# LOGIN_REDIRECT_URL = ""
+# LOGIN_REDIRECT_URL = 'login'
 
 ROOT_URLCONF = 'dooiu_analytics.urls'
 
@@ -109,8 +116,10 @@ WSGI_APPLICATION = 'dooiu_analytics.wsgi.application'
 #     }
 # }
 
-AUTH_USER_MODEL = 'login.User'
-AUTHENTICATION_BACKENDS = ['login.backends.NoLastLoginBackend']
+# AUTH_USER_MODEL = 'login.CustomUser'
+# AUTHENTICATION_BACKENDS = [
+#     'login.backends.UserAuthBackend',
+# ]
 
 DATABASES = {
     'default': {

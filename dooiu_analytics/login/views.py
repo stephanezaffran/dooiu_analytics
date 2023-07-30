@@ -1,48 +1,53 @@
-
 from dooiu_analytics.settings import BASE_DIR
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from login.models import User
 import logging
-
-from login.backends import NoLastLoginBackend
-
-
-
 from django.db import connection
+import pickle
+
+from services import user_services
+from show_data import views as data_views
+from login.models import UserProfile
+
 logger = logging.getLogger(__name__)
 
-def login(request):
+
+def user_login(request):
+    if get_current_user(request):
+        return redirect('home')
+
     if request.method == 'POST':
+
         phone_number = request.POST['phone_number']
         password = request.POST['password']
 
-        logger.debug(f"phone_number: {phone_number}, password: {password}")
-        user = authenticate(request, phone_number=phone_number, password=password)
-
-        try:
-            with connection.cursor() as cursor:
-                print(f"select * from user where phoneNumber = '{phone_number}' and password = '{password}';")
-                cursor.execute(f"select * FROM user where phoneNumber = '{phone_number}' and password = '{password}';")
-                result = cursor.fetchone()
-                if result:
-                    print(f"Database connection successful. {result}")
-                else:
-                    print("Database connection failed.")
-        except Exception as e:
-            print("Database connection error:", e)
+        user = user_services.custom_authenticate(phone_number=phone_number, password=password)
 
         if user is not None:
-            # If the user is valid, log them in and redirect to the home page or any other desired page.
-            login(request, user)
-            return redirect('home')  # Replace 'home' with the name of your home page URL pattern.
+            user_profile = UserProfile(id=user[0], phone_number=user[3], email=user[5], country_code=user[2],
+                                       user_type=user[10], first_name=user[6], last_name=user[7])
+
+            current_user_dict = user_profile.to_dict()
+            request.session['current_user'] = current_user_dict
+            context = {f'user': user_profile}
+            return redirect('customer_analytic')
         else:
-            # If the user is not valid, display an error message on the login page.
-            context = {f'error_message': 'Invalid credentials. Please try again.'+ phone_number + '  ' + password}
+            print("user is None")
+            context = {f'error_message': 'Invalid credentials. Please try again.' + phone_number + '  ' + password}
             return render(request, 'login.html', context)
-
-
-
     else:
         print("request.method not 'POST'")
+
     return render(request, 'login.html')
+
+
+def get_current_user(request):
+    if 'current_user' in request.session:
+        current_user_dict = request.session.get('current_user')
+        return UserProfile(**current_user_dict)
+    return None
+
+
+def user_logout(request):
+    if 'current_user' in request.session:
+        del request.session['current_user']
+    return redirect('login')

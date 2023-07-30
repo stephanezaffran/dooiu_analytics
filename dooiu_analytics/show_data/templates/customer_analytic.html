@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block body_class %}
+    base_item3
+{% endblock %}
+
+{% block content %}
+{% load static %}
+    <script src="{% static 'js/test.js' %}"></script>
+<script>
+    var graph_data_1 = JSON.parse("{{ graph_data_1|escapejs }}");
+    var graph_data_2 = JSON.parse("{{ graph_data_2|escapejs }}");
+    var graph_data_3 = JSON.parse("{{ graph_data_3|escapejs }}");
+    var graph_data_4 = JSON.parse("{{ graph_data_4|escapejs }}");
+    var day_list = JSON.parse("{{ day_list|escapejs }}");
+    var month_list = JSON.parse("{{ month_list|escapejs }}");
+    var year_list = JSON.parse("{{ year_list|escapejs }}");
+    var news_clients_per_month = JSON.parse("{{ news_clients_per_month|escapejs }}");
+    var user_name = "{{ user.first_name }}";
+</script>
+
+
+<header class="customer_title">
+    <h1>customer Dashboard </h1>
+</header>
+<div class="container_customer">
+    <div class="item_card">
+        <div class="card" id="widget1" >
+            <p>totals clients</p>
+            <h1>{{number_of_clients}}</h1>
+        </div>
+
+        <div class="card" id="widget2"></div>
+
+        <div class="card" id="widget3"></div>
+
+    </div>
+    <div class="item_graph_simple">
+        <div class="widget" id="widget4"></div>
+
+         <div class="widget" id="widget5"></div>
+    </div>
+    <div class="item_graph_double">
+        <div class="widget" id="widget6"></div>
+
+        <div class="widget" id="widget7"></div>
+    </div>
+
+</div>
+
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}
+
+<!--    <h1>Graph</h1>-->
+
+<!--    <div class="options">-->
+<!--        <select id="duration">-->
+<!--            <option value="day">Day</option>-->
+<!--            <option value="week">Week</option>-->
+<!--            <option value="month">Month</option>-->
+<!--            <option value="year">Year</option>-->
+<!--        </select>-->
+<!--    </div>-->
+
+<!--    <div class="chart-container">-->
+<!--        <canvas id="chart"></canvas>-->
+<!--    </div>-->
+
