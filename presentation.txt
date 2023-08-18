@@ -1,0 +1,54 @@
+dooiu_analytics
+├── dooiu_analytics/
+│   ├──.env/
+│   ├──__init__.py/
+│   ├── asgi.py/
+│   ├── middleware.py/
+│   ├──settings.py/
+│   ├──urls.py/
+│   └── wsgi.py/
+├── login/
+│   ├── migrations/
+│   │   └── __init__.py/
+│   ├── template/
+│   │   └── ....
+│   ├── __init__.py/
+│   ├── admin.py/
+│   ├── apps.py/
+│   ├── backends.py/
+│   ├── models_.py/
+│   ├── tests.py/
+│   └── views.py/
+├── services/
+│   ├── database_services.py/
+│   ├── decorators.py/
+│   ├── get_datas_for_graphs.py/
+│   ├── http_service.py/
+│   └── user_services.py/
+├── show_data/
+│   ├── migrations/
+│   │   └── __init__.py/
+│   ├── static/
+│   │   ├── css/
+│   │   │   └── index2.css/
+│   │   ├── img/
+│   │   │   ├── dooiu_logo.jpeg
+│   │   │   └── dooiu_logo2.png
+│   │   └── js/
+│   │       ├── autologout.js
+│   │       ├── geographic.js
+│   │       ├── heatmap.js
+│   │       └── home.js
+│   ├── template/
+│   │   ├── base.html
+│   │   ├── heatmap.html
+│   │   ├── home.html
+│   │   ├── login.html
+│   │   └── regionmap.html
+│   ├── __init__.py/
+│   ├── admin.py/
+│   ├── apps.py/
+│   ├── models_.py/
+│   ├── tests.py/
+│   └── views.py/
+└── manage.py/

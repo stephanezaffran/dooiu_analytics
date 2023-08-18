@@ -4,8 +4,6 @@ from services import database_services
 
 
 class UserProfile(models.Model):
-
-
     id = models.IntegerField(primary_key=True)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField()
@@ -27,4 +25,3 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.phone_number})"
-

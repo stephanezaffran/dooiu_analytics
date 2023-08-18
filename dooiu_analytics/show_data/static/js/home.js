@@ -15,10 +15,11 @@ function drawChart1() {
         title: 'communication per day',
         legend: { position: 'bottom' },
 //         backgroundColor: '#f2f2f2',
-         hAxis: {showTextEvery: my_axis},
-          width:450,
+        hAxis: {showTextEvery: my_axis},
+        vAxis: { viewWindow: { min: 0 } },
+        width:450,
         height:250,
-    };
+    }
     var chart = new google.visualization.LineChart(document.getElementById('widget4'));
 
     chart.draw(data, options);
@@ -42,7 +43,7 @@ function drawChart3() {
     var data = google.visualization.arrayToDataTable(year_list);
     var options = {
         title: 'communication per year',
-         width:450,
+        width:450,
         height:250,
         legend: { position: 'top' }
     };
@@ -60,8 +61,9 @@ function drawChart4() {
         title: 'new client per month',
         legend: { position: 'bottom' },
 //         backgroundColor: '#f2f2f2',
-         hAxis: {showTextEvery: my_axis},
-          width:450,
+        hAxis: {showTextEvery: my_axis},
+        vAxis: { viewWindow: { min: 0 } },
+        width:450,
         height:250,
     };
     var chart = new google.visualization.LineChart(document.getElementById('widget7'));

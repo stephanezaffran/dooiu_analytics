@@ -7,7 +7,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/index2.css' %}">
     <!--    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/autologout.js' %}"></script>
+    <!--    <script src="{% static 'js/home.js' %}"></script>-->
 </head>
 <body>
 <div class="container_base">
@@ -26,9 +27,9 @@
     <div class="sidebar base_item2">
         <ul>
             <li><a href="{% url 'home' %}">home</a></li>
-            <li><a href="{% url 'customer_analytic' %}">customers</a></li>
-            <li><a href="{% url 'sales_analytic' %}">sales</a></li>
-            <li><a href="#">other</a></li>
+            <li><a href="{% url 'heatmap' %}">heatmap</a></li>
+            <li><a href="{% url 'regionmap' %}">region map</a></li>
+            <!--            <li><a href="#">other</a></li>-->
             <li><a href="{% url 'logout' %}">logout</a></li>
         </ul>
     </div>

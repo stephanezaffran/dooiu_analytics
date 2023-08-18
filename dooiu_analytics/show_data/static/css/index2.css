@@ -121,6 +121,8 @@ form {
 .base_item3{
     grid-column: 2 / span 7 ;
     background-color:#ddaea442;
+    margin-right: 80px;
+    margin-left: 80px;
 }
 
 .login_page{
@@ -134,7 +136,7 @@ form {
 
 
 header {
-    padding: 10px;
+    -padding: 10px;
     text-align: center;
 }
 
@@ -155,12 +157,12 @@ header {
 
 .item_card{
     display: grid;
-     justify-content: space-around;
+    justify-content: space-around;
     grid-template-columns: 200px 200px 200px ;
 }
 
 .item_graph_simple{
-    display: flex;
+    display: grid;
     justify-content: space-around;
     grid-template-columns: auto auto ;
 }
@@ -177,8 +179,8 @@ header {
     height: 250px;
     border-radius: 20px;
     overflow: hidden;
-
 }
+
 .card {
     margin: 20px;
     width: 200px;
@@ -198,3 +200,99 @@ margin-left:10px;
     font-size: 4rem;
     font-family: cursive;
 }
+
+.heatmap_container{
+    display: flex;
+    justify-content: center;
+    -margin: 10px;
+}
+
+.modebar {
+      display: none;
+}
+
+#heatmap3{
+    width: 50vw;
+    height: 70vh;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.heatmap_checkbox_container{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto ;
+    gap: 60px;
+    margin-bottom: 20px;
+
+}
+
+.checkbox_label{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: auto auto ;
+    gap: 10px;
+}
+
+.heatmap_checkbox{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.heatmap_checkbox:checked {
+  background-color: #3498db;
+  border-color: #3498db;
+}
+
+
+.heatmap_checkbox::after {
+  content: '\2713'; /* Caractère Unicode pour la coche ✓ */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.heatmap_checkbox:checked::after {
+  opacity: 1;
+}
+
+.region_container{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+
+}
+.region{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr;
+    margin:20px;
+}
+
+.region p{
+    text-align:center;
+}
+
+.widget_region{
+    width: 35vw;
+    height: 30vh;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+

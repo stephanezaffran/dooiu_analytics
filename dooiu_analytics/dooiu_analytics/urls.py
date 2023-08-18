@@ -23,10 +23,9 @@ from login import views as login_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', data_views.hello),
     path('login/', login_views.user_login, name='login'),
     path('logout/', login_views.user_logout, name='logout'),
+    path('heatmap/', data_views.heatmap, name='heatmap'),
     path('home/', data_views.home, name='home'),
-    path('customer_analytic/', data_views.customer_analytic, name='customer_analytic'),
-    path('sales_analytic/', data_views.sales_analytic, name='sales_analytic'),
+    path('regionmap/', data_views.regionmap, name='regionmap'),
 ]

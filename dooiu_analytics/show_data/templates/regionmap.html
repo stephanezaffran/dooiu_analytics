@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block body_class %}
+base_item3
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+<script>
+<!--    var list_conversations = list_conversations;-->
+<!--    var clients_per_region = clients_per_region;-->
+    var clients_per_region = JSON.parse("{{ clients_per_region|escapejs }}");
+    var annual_revenus_per_region = JSON.parse("{{ annual_revenus_per_region|escapejs }}");
+    console.log(clients_per_region)
+    var user_name = "{{ user.first_name }}";
+
+</script>
+
+<header class="customer_title">
+    <h1>sales</h1>
+</header>
+<div>
+    <div class="region_container">
+        <div class="region">
+            <p>all my clients</p>
+            <div class="widget_region" id="heatmap1"></div>
+        </div>
+        <div class="region">
+            <p>annual revenus</p>
+            <div class="widget_region" id="heatmap2"></div>
+        </div>
+    </div>
+
+    <!--    <div class="options">-->
+    <!--        <select id="duration">-->
+    <!--            <option value="week">Week</option>-->
+    <!--            <option value="month">Month</option>-->
+    <!--            <option value="year">Year</option>-->
+    <!--        </select>-->
+    <!--    </div>-->
+</div>
+
+<script src="{% static 'js/geographic.js' %}"></script>
+
+{% endblock %}

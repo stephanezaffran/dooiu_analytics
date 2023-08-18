@@ -8,8 +8,6 @@ from services import user_services
 from show_data import views as data_views
 from login.models import UserProfile
 
-logger = logging.getLogger(__name__)
-
 
 def user_login(request):
     if get_current_user(request):
@@ -29,7 +27,7 @@ def user_login(request):
             current_user_dict = user_profile.to_dict()
             request.session['current_user'] = current_user_dict
             context = {f'user': user_profile}
-            return redirect('customer_analytic')
+            return redirect('home')
         else:
             print("user is None")
             context = {f'error_message': 'Invalid credentials. Please try again.' + phone_number + '  ' + password}

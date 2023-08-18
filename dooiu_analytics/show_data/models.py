@@ -26,11 +26,10 @@ class Conversation(models.Model):
                paidSeconds: {self.paid_seconds} - freeSeconds: {self.free_seconds} - totalPaid: {self.total_paid} - feeAmount: {self.fee_amount}
                 '''
 
-
     def get_clients(self):
         # call_time = self.freeSeconds + self.paidSeconds
 
-        return[self.start_time.strftime("%Y-%m-%d"), self.seeker_id]
+        return [self.start_time.strftime("%Y-%m-%d"), self.seeker_id]
 
     # def to_dict(self):
     #     return {

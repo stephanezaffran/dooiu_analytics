@@ -1,4 +1,3 @@
-
 from django.db import connection
 from django.db import models
 
@@ -16,7 +15,6 @@ def get_user_data(phone_number):
             else:
                 return None
 
-
             # if user_data:
             #     user = self.model(phone_number=user_data[3])  # Assuming phone_number is in the second column
             #     print(f"entered to user_data : {user}  password: {user_data[8]} ")
@@ -31,7 +29,6 @@ def get_user_data(phone_number):
 
 
 def get_conversations(id):
-
     requete_sql = f'''
         SELECT 
             c.id AS conversation_id,
